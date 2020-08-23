@@ -11,7 +11,7 @@
 | last_name       | string   | null: false               |
 | first_name_kana | string   | null: false               |
 | last_name_kana  | string   | null: false               |
-| birth_date      | datetime | null: false               |
+| birth_date      | date     | null: false               |
 
 ### Association
 
@@ -20,18 +20,18 @@
 
 ## items テーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| image          | text       | null: false                    |
-| name           | string     | null: false                    |
-| text           | text       | null: false                    |
-| price          | integer    | null: false                    |
-| category       | string     | null: false                    |
-| state          | string     | null: false                    |
-| delivery_type  | string     | null: false                    |
-| prefectures    | string     | null: false                    |
-| duration       | string     | null: false                    |
-| user_id        | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| image         | string     | null: false                    |
+| name          | string     | null: false                    |
+| text          | text       | null: false                    |
+| category      | integer    | null: false                    |
+| state         | integer    | null: false                    |
+| delivery_type | integer    | null: false                    |
+| prefecture    | integer    | null: false                    |
+| duration      | integer    | null: false                    |
+| price         | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -40,29 +40,29 @@
 
 ## orders テーブル
 
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| card_number        | string     | null: false                    |
-| expiration_number  | string     | null: false                    |
-| security_code      | string     | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
-| item_id            | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| -------| ---------- | ------------------------------ |
+| price  | integer     | null: false                   |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
+- has_one :destination
 
 ## destinations テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| postal_code  | string     |                                |
-| prefectures  | string     | null: false                    |
-| address      | string     | null: false                    |
-| building     | string     | null: false                    |
-| phone_number | string     | null: false                    |
-| order_id     | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    |
+| prefecture    | integer    | null: false                    |
+| city          | string     | null: false                    |
+| house_number  | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | string     | null: false                    |
+| order         | references | null: false                    |
 
 ### Association
 
