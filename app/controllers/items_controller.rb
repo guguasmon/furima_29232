@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
     # includes(:order).order("created_at DESC")
-    @user = User.new
   end
 
   private
