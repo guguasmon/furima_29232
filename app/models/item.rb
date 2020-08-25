@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :category
   belongs_to_active_hash :state
-  belongs_to_active_hash :deliveryType
+  belongs_to_active_hash :delivery_type
   belongs_to_active_hash :duration
   has_one_attached :image
   belongs_to :user
@@ -12,9 +12,9 @@ class Item < ApplicationRecord
   # validates :image, :name, :text, :price, :category_id, :state_id, :delivery_type_id, :prefecture_id, :duration_id, presence: true
   with_options presence: true do
     validates :image
-    validates :name
-    validates :text
-    validates :price
+    validates :name, length: { maximum: 40 }
+    validates :text, length: { maximum: 1000 }
+    validates :price, format: {with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters."}
     validates :category_id
     validates :state_id
     validates :delivery_type_id
