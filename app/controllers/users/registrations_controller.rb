@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-   before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -13,14 +13,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     if @user.valid?
-      @user.save  # バリデーションをクリアした時
+      @user.save # バリデーションをクリアした時
       bypass_sign_in(@user)
-      return redirect_to root_path
+      redirect_to root_path
     else
-      render "new"    # バリデーションに弾かれた時
+      render 'new' # バリデーションに弾かれた時
     end
   end
-
 
   # GET /resource/edit
   # def edit
