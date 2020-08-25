@@ -5,6 +5,10 @@ class ItemsController < ApplicationController
     # includes(:order).order("created_at DESC")
   end
 
+  def new
+    @item = Item.new
+  end
+
   private
 
   def item_params
