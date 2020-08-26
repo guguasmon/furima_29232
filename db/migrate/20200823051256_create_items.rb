@@ -10,6 +10,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :duration_id,      null: false
       t.integer :price,            null: false
       t.timestamps
+      
     end
   end
 end
