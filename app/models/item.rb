@@ -14,21 +14,21 @@ class Item < ApplicationRecord
     validates :image
     validates :name, length: { maximum: 40 }
     validates :text, length: { maximum: 1000 }
-    validates :price, format: {with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters."}
+    validates :price, format: { with: /\A[0-9]+\z/, message: 'is invalid. Input half-width characters.' }
     validates :category_id
     validates :state_id
     validates :delivery_type_id
     validates :prefecture_id
     validates :duration_id
-    #リストの選択が「--」の時は保存できないようにする
-    with_options numericality: { other_than: 0, message: "can't be blank"  }  do
-    validates :category_id
-    validates :state_id
-    validates :delivery_type_id
-    validates :prefecture_id
-    validates :duration_id
-    end 
+    # リストの選択が「--」の時は保存できないようにする
+    with_options numericality: { other_than: 0, message: "can't be blank" } do
+      validates :category_id
+      validates :state_id
+      validates :delivery_type_id
+      validates :prefecture_id
+      validates :duration_id
+    end
     # 「値段」の金額範囲に関するバリデーション
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range"}
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
   end
 end
