@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @category = Category.find(@item.category_id) 
+    @category = Category.find(@item.category_id)
     @state = State.find(@item.state_id)
     @delivery = DeliveryType.find(@item.delivery_type_id)
     @prefecture = Prefecture.find(@item.prefecture_id)
@@ -35,6 +35,6 @@ class ItemsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params[:id]) 
+    @item = Item.find(params[:id])
   end
 end
