@@ -19,6 +19,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to root_path
+  end
+
   def show
     @category = Category.find(@item.category_id)
     @state = State.find(@item.state_id)
