@@ -15,14 +15,18 @@ class ItemsController < ApplicationController
       @item.save
       redirect_to root_path
     else
-      render :new
+      render action: :new
     end
   end
 
   def destroy
     item = Item.find(params[:id])
     item.destroy
-    redirect_to root_path
+    if item.destroyed?
+      redirect_to root_path
+    else
+      redirect_to item_path(item.id)
+    end
   end
 
   def show
