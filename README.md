@@ -42,6 +42,7 @@
 
 | Column | Type       | Options                        |
 | -------| ---------- | ------------------------------ |
+| token  | string     | null: false                    |
 | user   | references | null: false, foreign_key: true |
 | item   | references | null: false, foreign_key: true |
 
