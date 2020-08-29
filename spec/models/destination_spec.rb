@@ -14,6 +14,10 @@ RSpec.describe Destination, type: :model do
         @destination.postal_code = '789-1234'
         expect(@destination).to be_valid
       end
+      it 'building_nameが空でも登録できる' do
+        @destination.building_name = nil
+        expect(@destination).to be_valid
+      end
       it 'phone_numberが11桁のハイフンを含まない数字であれば登録できる' do
         @destination.phone_number = '78912345678'
         expect(@destination).to be_valid
