@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item_order, only: [:index, :create]
+  before_action :move_to_index, only: :index
 
   def index
     @shopping = UserShopping.new
@@ -8,6 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    if @item.order.blank?
       @shopping = UserShopping.new(shopping_params)
       if @shopping.valid?
         pay_item
@@ -16,6 +18,7 @@ class OrdersController < ApplicationController
       else
         render("orders/index")
       end
+    end
   end
 
   private
@@ -36,6 +39,14 @@ class OrdersController < ApplicationController
       card: shopping_params[:token],    # カードトークン
       currency:'jpy'                 # 通貨の種類(日本円)
     )
+  end
+
+  def move_to_index
+    if user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path
+    elsif @item.order.present?
+      redirect_to root_path
+    end
   end
 
 end
