@@ -12,15 +12,7 @@ class UserShopping
   end
 
   def save
-    order = Order.new(token: token, item_id: item_id, user_id: user_id)
-    if order.valid?
-      order.save
-      destination = Destination.new(postal_code: postal_code, prefecture_id: prefecture_id, city: city, house_number: house_number, building_name: building_name, phone_number: phone_number, order_id: order.id)
-      if destination.valid?
-        destination.save
-      else
-        order.destroy
-      end
-    end
+    order = Order.create(token: token, item_id: item_id, user_id: user_id)
+    destination = Destination.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, house_number: house_number, building_name: building_name, phone_number: phone_number, order_id: order.id)
   end
 end
