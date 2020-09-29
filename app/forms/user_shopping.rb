@@ -3,11 +3,11 @@ class UserShopping
   attr_accessor :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :item_id, :user_id, :order_id, :token
 
   with_options presence: true do
-    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'is invalid. Include hyphen(-)' }
-    validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
+    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'はハイフン（-）を入れた７桁で入力してください' }
+    validates :prefecture_id, numericality: { other_than: 0, message: 'の選択肢を選んでください' }
     validates :city
     validates :house_number
-    validates :phone_number, format: { with: /\A\d{11}\z/, message: 'is invalid. Include not hyphen(-)' }
+    validates :phone_number, format: { with: /\A\d{11}\z/, message: 'はハイフン（-）を入れた１１桁で入力してください' }
     validates :token
   end
 
