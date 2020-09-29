@@ -27,22 +27,22 @@ RSpec.describe UserShopping, type: :model do
       it 'postal_codeが空だと登録できない' do
         @shopping.postal_code = nil
         @shopping.valid?
-        expect(@shopping.errors.full_messages).to include("Postal code can't be blank", 'Postal code is invalid. Include hyphen(-)')
+        expect(@shopping.errors.full_messages).to include("Postal code can't be blank", "Postal code はハイフン（-）を入れた７桁で入力してください")
       end
       it 'postal_codeがハイフンを含んでいないと登録できない' do
         @shopping.postal_code = '1234567'
         @shopping.valid?
-        expect(@shopping.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
+        expect(@shopping.errors.full_messages).to include("Postal code はハイフン（-）を入れた７桁で入力してください")
       end
       it 'postal_codeが7桁でないと登録できない' do
         @shopping.postal_code = '123-456'
         @shopping.valid?
-        expect(@shopping.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
+        expect(@shopping.errors.full_messages).to include('Postal code はハイフン（-）を入れた７桁で入力してください')
       end
       it 'prefecture_idが0だと出品できない' do
         @shopping.prefecture_id = 0
         @shopping.valid?
-        expect(@shopping.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@shopping.errors.full_messages).to include("Prefecture の選択肢を選んでください")
       end
       it 'cityが空だと登録できない' do
         @shopping.city = nil
@@ -62,12 +62,12 @@ RSpec.describe UserShopping, type: :model do
       it 'phone_numberがハイフンを含んでいると登録できない' do
         @shopping.phone_number = '090-1234-5678'
         @shopping.valid?
-        expect(@shopping.errors.full_messages).to include('Phone number is invalid. Include not hyphen(-)')
+        expect(@shopping.errors.full_messages).to include('Phone number はハイフン（-）を入れた１１桁で入力してください')
       end
       it 'phone_numberが11桁でないと登録できない' do
         @shopping.phone_number = '0901234567'
         @shopping.valid?
-        expect(@shopping.errors.full_messages).to include('Phone number is invalid. Include not hyphen(-)')
+        expect(@shopping.errors.full_messages).to include('Phone number はハイフン（-）を入れた１１桁で入力してください')
       end
       it 'tokenが空だと登録できない' do
         @shopping.token = nil

@@ -26,6 +26,6 @@ class Item < ApplicationRecord
       validates :prefecture_id
       validates :duration_id
     end
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: '適正な価格にしてください' }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は適正な価格にしてください' }
   end
 end
