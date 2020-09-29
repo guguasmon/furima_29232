@@ -27,12 +27,12 @@ RSpec.describe UserShopping, type: :model do
       it 'postal_codeが空だと登録できない' do
         @shopping.postal_code = nil
         @shopping.valid?
-        expect(@shopping.errors.full_messages).to include("Postal code can't be blank", "Postal code はハイフン（-）を入れた７桁で入力してください")
+        expect(@shopping.errors.full_messages).to include("Postal code can't be blank", 'Postal code はハイフン（-）を入れた７桁で入力してください')
       end
       it 'postal_codeがハイフンを含んでいないと登録できない' do
         @shopping.postal_code = '1234567'
         @shopping.valid?
-        expect(@shopping.errors.full_messages).to include("Postal code はハイフン（-）を入れた７桁で入力してください")
+        expect(@shopping.errors.full_messages).to include('Postal code はハイフン（-）を入れた７桁で入力してください')
       end
       it 'postal_codeが7桁でないと登録できない' do
         @shopping.postal_code = '123-456'
@@ -42,7 +42,7 @@ RSpec.describe UserShopping, type: :model do
       it 'prefecture_idが0だと出品できない' do
         @shopping.prefecture_id = 0
         @shopping.valid?
-        expect(@shopping.errors.full_messages).to include("Prefecture の選択肢を選んでください")
+        expect(@shopping.errors.full_messages).to include('Prefecture の選択肢を選んでください')
       end
       it 'cityが空だと登録できない' do
         @shopping.city = nil

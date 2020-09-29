@@ -35,32 +35,32 @@ RSpec.describe Item, type: :model do
       it 'category_idが0だと出品できない' do
         @item.category_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category を入力してください")
+        expect(@item.errors.full_messages).to include('Category を入力してください')
       end
       it 'state_idが0だと出品できない' do
         @item.state_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("State を入力してください")
+        expect(@item.errors.full_messages).to include('State を入力してください')
       end
       it 'delivery_type_idが0だと出品できない' do
         @item.delivery_type_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery type を入力してください")
+        expect(@item.errors.full_messages).to include('Delivery type を入力してください')
       end
       it 'prefecture_idが0だと出品できない' do
         @item.prefecture_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture を入力してください")
+        expect(@item.errors.full_messages).to include('Prefecture を入力してください')
       end
       it 'duration_idが0だと出品できない' do
         @item.duration_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Duration を入力してください")
+        expect(@item.errors.full_messages).to include('Duration を入力してください')
       end
       it 'priceが空だと出品できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は適正な価格にしてください")
+        expect(@item.errors.full_messages).to include('Price は適正な価格にしてください')
       end
       it 'priceが全角数字だと出品できない' do
         @item.price = '３００'

@@ -19,7 +19,7 @@ class Item < ApplicationRecord
     validates :delivery_type_id
     validates :prefecture_id
     validates :duration_id
-    with_options numericality: { other_than: 0, message: "を入力してください" } do
+    with_options numericality: { other_than: 0, message: 'を入力してください' } do
       validates :category_id
       validates :state_id
       validates :delivery_type_id
